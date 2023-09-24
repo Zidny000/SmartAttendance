@@ -1,2 +1,6 @@
-# SmartAttendance
-A camera based live attendance system based on face recognition technology.
+# Smart Attendance
+Web App In Progress
+
+
+
+
