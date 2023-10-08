@@ -8,7 +8,7 @@ import {
 } from '../../../components/common/sharedLayout';
 import './NoFound.css';
 
-const { Content } = Layout
+const { Content } = Layout;
 
 export default () => {
   return (

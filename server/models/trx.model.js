@@ -3,7 +3,7 @@ const { model, Schema } = require("mongoose");
 const trxSchema = new Schema(
   {
     attendance: {
-      type: Schema.Types.ObjectId, 
+      type: Schema.Types.ObjectId,
       required: true,
     },
     student: {

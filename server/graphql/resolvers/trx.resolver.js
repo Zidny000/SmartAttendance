@@ -19,7 +19,7 @@ module.exports = {
       }
     },
     async getTrxListInAttendance(_, {attendanceID}, context) {
-      const user = checkAuth(context)
+      const user = checkAuth(context);
 
       try {
         const trxList = await Trx.find({
