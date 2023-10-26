@@ -21,7 +21,7 @@ export default () => {
       <Menu.Item key={'dashboard'} icon={<HomeOutlined />}>
         <Link to={'/dashboard'}>Courses</Link>
       </Menu.Item>
-      {!collapsed && <FpsView width={190} height={100} top={525} />}
+      {/* {!collapsed && <FpsView width={190} height={100} top={525} />} */}
     </Menu>
   );
 };

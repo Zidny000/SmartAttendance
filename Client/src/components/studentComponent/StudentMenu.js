@@ -26,7 +26,7 @@ export default () => {
       <Menu.Item key={'facegallery'} icon={<PictureOutlined />}>
         <Link to={'/facegallery'}>Face Gallery</Link>
       </Menu.Item>
-      {!collapsed && <FpsView width={190} height={100} top={525} />}
+      {/* {!collapsed && <FpsView width={190} height={100} top={525} />} */}
     </Menu>
   );
 };

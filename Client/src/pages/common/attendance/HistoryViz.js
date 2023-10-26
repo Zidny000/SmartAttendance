@@ -105,16 +105,18 @@ export default ({ attendeesLength, absenteesLength }) => {
   };
 
   return (
-    <PieChart width={pieSize.width} height={pieSize.height / 2}>
+    <div style={{ display: "flex", justifyContent: "center" }} >
+    <PieChart width={pieSize.width} height={pieSize.height/2}>
+    
       <Pie
         activeIndex={activeIndex}
         activeShape={renderActiveShape}
         data={data}
         dataKey="value"
-        cx={(pieSize.width * 3) / 7}
-        cy={200}
-        innerRadius={70}
-        outerRadius={100}
+        // cx={(pieSize.width * 3) / 7}
+        // cy={200}
+        innerRadius={pieSize.height/7}
+        outerRadius={pieSize.height/6}
         fill="#8884d8"
         onMouseEnter={onPieEnter}
       >
@@ -126,5 +128,8 @@ export default ({ attendeesLength, absenteesLength }) => {
         ))}
       </Pie>
     </PieChart>
+   
+    </div>
+    
   );
 };
