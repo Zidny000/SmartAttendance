@@ -11,6 +11,7 @@ import {
   Button,
   Typography,
 } from "antd";
+import { Excel } from "antd-table-saveas-excel";
 import React, { useState, useEffect } from "react";
 import {
   Footer,
@@ -34,7 +35,7 @@ const { Content } = Layout;
 export default (props) => {
   const columns = [
     {
-      title: <strong>Avatar</strong>,
+      title: "Avatar",
       dataIndex: "avatar",
       key: "avatar",
       align: "center",
@@ -42,20 +43,20 @@ export default (props) => {
     },
     {
       key: "cardID",
-      title: <strong>Matric Number</strong>,
+      title: "Matric Number",
       dataIndex: "cardID",
       align: "center",
       sorter: (a, b) => a.cardID.localeCompare(b.cardID),
     },
     {
       key: "name",
-      title: <strong>Name</strong>,
+      title: "Name",
       dataIndex: "name",
       align: "center",
       sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
-      title: <strong>Status</strong>,
+      title: "Status",
       dataIndex: "status",
       render: (_, record) => (
         <Tag color={record.status === "Absent" ? "volcano" : "green"}>
@@ -66,14 +67,14 @@ export default (props) => {
       sorter: (a, b) => a.status.localeCompare(b.status),
     },
     {
-      title: <strong>Check In Date</strong>,
+      title: "Check In Date",
       dataIndex: "checkin_date",
       render: (_, record) => record.checkin_date,
       align: "center",
       sorter: (a, b) => a.checkin_date.localeCompare(b.checkin_date),
     },
     {
-      title: <strong>Check In Time</strong>,
+      title: "Check In Time",
       dataIndex: "checkin_time",
       render: (_, record) => record.checkin_time,
       align: "center",
@@ -214,6 +215,19 @@ export default (props) => {
     return parsedData;
   };
 
+  const handleExoirtExcel = () => {
+    const excel = new Excel();
+    excel
+      .addSheet("test")
+      .addColumns(columns)
+      .addDataSource(courseAndParticipantsGQLQuery.data
+        ? parseParticipantData(participants, absentees)
+        : [], {
+        str2Percent: true
+      })
+      .saveAs("Excel.xlsx");
+  };
+
   return (
     <Layout className="layout">
       <Navbar />
@@ -300,6 +314,15 @@ export default (props) => {
                 }
                 columns={columns}
               />
+              <Button
+                style={{ float: "right" }}
+                // icon={<RedoOutlined />}
+                disabled={attendanceGQLQuery.loading}
+                loading={attendanceGQLQuery.loading}
+                onClick={handleExoirtExcel}
+              >
+                Export Excel Report
+              </Button>
             </Space>
           </Card>
         </Content>
