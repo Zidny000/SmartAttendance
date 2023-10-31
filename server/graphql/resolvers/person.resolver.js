@@ -268,9 +268,9 @@ module.exports = {
     ) {
       const currUser = checkAuth(context);
       let errors = {};
-
+      console.log(profilePicture)
       try {
-        //if profilePicture exist
+        
         if (profilePicture) {
           const uploadedResponse = await cloudinary.uploader.upload(
             profilePicture,
